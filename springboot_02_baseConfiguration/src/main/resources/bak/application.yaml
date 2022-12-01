@@ -1,0 +1,8 @@
+server:
+  port: 87
+spring:
+  main:
+    banner-mode: log
+logging:
+  level:
+    root: info

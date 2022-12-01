@@ -1,0 +1,18 @@
+country: china
+
+enterprise:
+  name: yaxin
+  age: 18
+  area: dalian
+
+users:
+  - name: qyx
+    age: 24
+  - name: yx
+    age: 23
+
+baseUrl: C:\programFiles\Java
+# 使用 ${} 引用 baseUrl
+tempUrl: ${baseUrl}\jdk1.8.0_351
+# 使用双引号转义特殊字符
+tempUrl2: "${baseUrl}\tempUrl2"

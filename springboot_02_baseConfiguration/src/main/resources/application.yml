@@ -1,0 +1,13 @@
+# 端口
+server:
+  port: 81
+
+# banner
+spring:
+  main:
+    banner-mode: off
+
+# 日志级别
+logging:
+  level:
+    root: info
