@@ -16,3 +16,16 @@ baseUrl: C:\programFiles\Java
 tempUrl: ${baseUrl}\jdk1.8.0_351
 # 使用双引号转义特殊字符
 tempUrl2: "${baseUrl}\tempUrl2"
+
+# 将 datasource 的内容封装成一个对象
+datasource:
+  driver: com.mysql.jdbc.Driver
+  url: jdbc:mysql://localhost/springboot2_db
+  username: root
+  password: 123456
+
+server:
+  port: 8080
+  # 设置url前缀，现在访问localhost:8080/api/books才可以成功
+  servlet:
+    context-path: /api
