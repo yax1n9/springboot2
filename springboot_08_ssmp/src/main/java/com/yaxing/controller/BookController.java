@@ -33,10 +33,42 @@ public class BookController {
         return new Result(true, bookService.list(), ResultMsg.SELECT_SUCCESS_MSG);
     }
 
+    /**
+     * 分页查询
+     * @param currentPage
+     * @param size
+     * @return
+     */
+    // @GetMapping("/{currentPage}/{size}")
+    // public Result getPage(@PathVariable Integer currentPage, @PathVariable Integer size) {
+    //     IPage<Book> page = new Page<>(currentPage, size);
+    //     bookService.page(page, null);
+    //
+    //     // 如果当前请求的页码数大于最大页码数
+    //     if (currentPage > page.getPages()) {
+    //         // 把当前页码数换为最大页码数
+    //         currentPage = (int) page.getPages();
+    //         page = new Page<>(currentPage, size);
+    //         // 重新请求最后一页数据
+    //         bookService.page(page, null);
+    //     }
+    //     return new Result(true, page, ResultMsg.SELECT_SUCCESS_MSG);
+    // }
+
+    /**
+     * 分页条件查询
+     *
+     * @param currentPage
+     * @param size
+     * @return
+     */
     @GetMapping("/{currentPage}/{size}")
-    public Result getPage(@PathVariable Integer currentPage, @PathVariable Integer size) {
-        IPage<Book> page = new Page<>(currentPage, size);
-        return new Result(true, bookService.page(page, null), ResultMsg.SELECT_SUCCESS_MSG);
+    public Result getPage(@PathVariable Integer currentPage, @PathVariable Integer size, Book book) {
+        IPage<Book> page = bookService.getPage(currentPage, size, book);
+        if (currentPage > page.getPages()) {
+            page = bookService.getPage((int) page.getPages(), size, book);
+        }
+        return new Result(true, page, ResultMsg.SELECT_SUCCESS_MSG);
     }
 
     @PostMapping
